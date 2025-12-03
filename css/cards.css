@@ -1,0 +1,46 @@
+.product-card {
+  background: rgba(255, 255, 255, 0.05); /* Transparencia elegante */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+}
+
+/* Textos */
+.product-name, .product-header, .product-price {
+  color: #f3f4f6; /* Gris claro tirando a blanco */
+}
+
+.product-price {
+  color: #4ade80; /* Verde suave, moderno */
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+/* Badges */
+.badge {
+  background: rgba(255,255,255,0.12);
+  color: #e5e7eb;
+  border: 1px solid rgba(255,255,255,0.18);
+}
+
+.stock-ok { background: #065f4655; color: #bbf7d0; }
+.stock-low { background: #92400e55; color: #fed7aa; }
+.stock-out { background: #991b1b55; color: #fecaca; }
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+

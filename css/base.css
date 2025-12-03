@@ -1,0 +1,14 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at top, #1e293b 0, #020617 45%, #000 100%);
+  min-height: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}

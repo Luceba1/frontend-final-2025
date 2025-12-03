@@ -1,0 +1,202 @@
+.app-root {
+  width: 100%;
+  max-width: 1200px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.app-main {
+  margin-top: 50px;  /* Ajustá si querés más o menos separación */
+  flex: 1;
+}
+
+
+/* HEADER */
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: var(--radius-lg);
+  padding: 12px 18px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(18px);
+  gap: 16px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-logo {
+  font-size: 26px;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.brand-subtitle {
+  font-size: 12px;
+  color: var(--text-soft);
+}
+
+.header-nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.mini-cart {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.mini-cart-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-soft);
+}
+
+.mini-cart-pill {
+  margin-top: 2px;
+  background: rgba(15, 23, 42, 0.8);
+  border-radius: var(--radius-pill);
+  padding: 6px 10px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  font-size: 12px;
+}
+
+.section {
+  display: none;
+}
+.section.visible {
+  display: block;
+}
+
+/* --- HERO PRINCIPAL --- */
+
+.home-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 26px;
+  padding: 38px 26px;
+  border-radius: 24px;
+  border: 1px solid rgba(148, 163, 184, 0.30);
+  background: linear-gradient(135deg, rgba(20, 184, 166, 0.08), rgba(30, 64, 175, 0.10));
+  box-shadow: var(--shadow-soft);
+  align-items: center;
+}
+
+.home-hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.home-title {
+  font-size: 34px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.home-subtitle {
+  font-size: 16px;
+  color: var(--text-soft);
+  margin: 0;
+  max-width: 580px;
+}
+
+.home-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+}
+
+/* TARJETA DEL HERO */
+
+.home-hero-card {
+  background: rgba(15, 23, 42, 0.95);
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  padding: 16px;
+  box-shadow: var(--shadow-soft);
+}
+
+.home-hero-card-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.home-hero-card-body {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--text-soft);
+}
+
+/* --- FEATURES --- */
+
+.home-features {
+  margin-top: 34px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 18px;
+}
+
+.home-feature-card {
+  background: rgba(15, 23, 42, 0.92);
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  padding: 20px;
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.home-feature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 38px rgba(0, 0, 0, 0.45);
+}
+
+.home-feature-icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.home-feature-card h3 {
+  margin: 4px 0 6px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.home-feature-card p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-soft);
+}

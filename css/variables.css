@@ -1,0 +1,21 @@
+:root {
+  --bg: #0f172a;
+  --bg-alt: #020617;
+  --bg-elevated: #020617;
+  --card-bg: #020617;
+  --card-border: #1f2937;
+  --accent: #14b8a6;
+  --accent-soft: rgba(20, 184, 166, 0.1);
+  --accent-strong: #0f766e;
+  --text: #e5e7eb;
+  --text-soft: #9ca3af;
+  --danger: #f97373;
+  --success: #22c55e;
+  --warning: #facc15;
+
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --radius-pill: 999px;
+
+  --shadow-soft: 0 14px 40px rgba(15, 23, 42, 0.6);
+}

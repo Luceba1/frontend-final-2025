@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mi Ecommerce</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Fuente moderna -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<div id="loading-overlay" class="loading-overlay" hidden>
+  <div class="loading-spinner"></div>
+</div>
+<body>
+  <div class="app-root">
+    <!-- HEADER -->
+    <header class="app-header">
+      <div class="header-left">
+        <div class="brand">
+          <span class="brand-logo">🛒</span>
+          <div class="brand-text">
+            <span class="brand-title">Mi Ecommerce</span>
+            <span class="brand-subtitle">Experiencia de compra simple y moderna</span>
+          </div>
+        </div>
+      </div>
+
+      <nav class="header-nav">
+        <button class="nav-btn active" data-section="home">Inicio</button>
+        <button class="nav-btn" data-section="catalog">Catálogo</button>
+        <button class="nav-btn" data-section="cart">Carrito</button>
+        <button class="nav-btn" data-section="orders">Mis pedidos</button>
+        <button class="nav-btn" data-section="admin">Administrador</button>
+      </nav>
+
+      <div class="header-right">
+        <div class="mini-cart">
+          <span class="mini-cart-label">Carrito</span>
+          <span class="mini-cart-pill">
+            <span id="mini-cart-count">0</span> ítems ·
+            $<span id="mini-cart-total">0.00</span>
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="app-main">
+      <!-- HOME -->
+      <section id="section-home" class="section visible">
+
+  <!-- HERO PRINCIPAL -->
+  <div class="home-hero">
+
+    <div class="home-hero-content">
+      <h1 class="home-title">
+        Comprá fácil, rápido y con confianza.
+      </h1>
+
+      <p class="home-subtitle">
+        Tu nueva tienda online con catálogo dinámico, stock en tiempo real
+        y pedidos 100% trazables gracias a un backend FastAPI optimizado.
+      </p>
+
+      <div class="home-actions">
+        <button class="btn primary nav-btn" data-section="catalog">Ver catálogo</button>
+        <button class="btn ghost nav-btn" data-section="orders">Consultar pedido</button>
+      </div>
+    </div>
+
+    <div class="home-hero-card">
+      <p class="home-hero-card-title">🛡️ Tu compra siempre protegida</p>
+      <p class="home-hero-card-body">
+        Procesamiento seguro, datos cifrados y sistema anti errores.
+      </p>
+    </div>
+
+  </div>
+
+  <!-- SECCIÓN DE FEATURES -->
+  <div class="home-features">
+
+    <div class="home-feature-card">
+      <div class="home-feature-icon">⚡</div>
+      <h3>Rendimiento al máximo</h3>
+      <p>Backend FastAPI capaz de manejar cientos de peticiones sin caer.</p>
+    </div>
+
+    <div class="home-feature-card">
+      <div class="home-feature-icon">📦</div>
+      <h3>Stock real</h3>
+      <p>Cada producto muestra stock actualizado directamente desde la API.</p>
+    </div>
+
+    <div class="home-feature-card">
+      <div class="home-feature-icon">🧾</div>
+      <h3>Pedidos trazables</h3>
+      <p>Ingresa la ID de tu pedido y consultá el estado en segundos.</p>
+    </div>
+
+    <div class="home-feature-card">
+      <div class="home-feature-icon">💳</div>
+      <h3>Pagos y métodos flexibles</h3>
+      <p>Elegí entre múltiples formas de pago y métodos de entrega.</p>
+    </div>
+
+  </div>
+
+</section>
+
+
+      <!-- CATÁLOGO -->
+      <section id="section-catalog" class="section">
+        <div class="section-header">
+          <h2>Catálogo</h2>
+          <p>Buscá, filtrá y encontrá el producto perfecto.</p>
+        </div>
+
+        <div class="catalog-layout">
+          <!-- FILTROS -->
+          <aside class="catalog-filters">
+            <h3>Filtros</h3>
+            <div class="filter-group">
+              <label for="filter-search">Buscar producto</label>
+              <input
+                type="text"
+                id="filter-search"
+                placeholder="Ej: Notebook, Mouse..."
+              />
+            </div>
+
+            <div class="filter-group">
+              <label for="filter-category">Categoría</label>
+              <select id="filter-category">
+                <option value="">Todas</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label for="filter-max-price">Precio máximo</label>
+              <input
+                type="number"
+                id="filter-max-price"
+                min="0"
+                placeholder="Ej: 50000"
+              />
+            </div>
+
+            <button id="btn-clear-filters" class="btn ghost full">
+              Limpiar filtros
+            </button>
+          </aside>
+
+          <!-- GRID DE PRODUCTOS -->
+          <section class="catalog-products">
+            <div id="products-empty" class="empty-state" hidden>
+              No se encontraron productos con los filtros actuales.
+            </div>
+            <div id="products-grid" class="products-grid">
+              <!-- Se llena desde app.js -->
+                <!-- GRID DE PRODUCTOS -->
+<section class="catalog-products">
+  <div id="products-empty" class="empty-state" hidden>
+    No se encontraron productos con los filtros actuales.
+  </div>
+
+  <div id="products-grid" class="products-grid"></div>
+
+  <!-- PAGINACIÓN -->
+  <div id="catalog-pagination" class="pagination" hidden></div>
+</section>
+
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <!-- CARRITO -->
+      <section id="section-cart" class="section">
+        <div class="section-header">
+          <h2>Tu carrito</h2>
+          <p>Revisá tus productos y completá tus datos para finalizar la compra.</p>
+        </div>
+
+        <div class="cart-layout">
+          <!-- LISTA DE ITEMS -->
+          <section class="cart-items-card">
+            <h3>Productos en el carrito</h3>
+            <div id="cart-items">
+              <!-- app.js -->
+            </div>
+            <div class="cart-total-row">
+              <span>Total:</span>
+              <strong>$<span id="cart-total">0.00</span></strong>
+            </div>
+          </section>
+
+          <!-- CHECKOUT -->
+          <section class="checkout-card">
+            <h3>Datos de compra</h3>
+            <form id="checkout-form" class="form-grid">
+              <div class="form-group span-2">
+                <label>Nombre</label>
+                <input type="text" name="name" placeholder="Lucas" />
+              </div>
+
+              <div class="form-group span-2">
+                <label>Apellido</label>
+                <input type="text" name="lastname" placeholder="Pujada" />
+              </div>
+
+              <div class="form-group span-2">
+                <label>Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="ejemplo@correo.com"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Teléfono</label>
+                <input
+                  type="tel"
+                  name="telephone"
+                  placeholder="261..."
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Edad</label>
+                <input
+                  type="number"
+                  name="age"
+                  placeholder="25"
+                  min="0"
+                  required
+                />
+              </div>
+
+              <div class="form-divider span-2">Dirección (opcional)</div>
+
+              <div class="form-group span-2">
+                <label>Calle</label>
+                <input type="text" name="street" placeholder="Calle" />
+              </div>
+
+              <div class="form-group">
+                <label>Número</label>
+                <input type="text" name="number" placeholder="1234" />
+              </div>
+
+              <div class="form-group">
+                <label>Ciudad</label>
+                <input type="text" name="city" placeholder="Ciudad" />
+              </div>
+
+              <div class="form-divider span-2">Métodos</div>
+
+              <div class="form-group">
+                <label>Método de entrega</label>
+                <select name="delivery_method" required>
+                  <option value="1">Drive Thru</option>
+                  <option value="2">Retiro en mano</option>
+                  <option value="3">Envío a domicilio</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Forma de pago</label>
+                <select name="payment_type" required>
+                  <option value="1">Efectivo</option>
+                  <option value="2">Débito</option>
+                  <option value="3">Crédito</option>
+                  <option value="4">Transferencia</option>
+                  <option value="5">Otro</option>
+                </select>
+              </div>
+
+              <div class="form-actions span-2">
+                <button type="submit" class="btn primary full">
+                  Finalizar compra
+                </button>
+              </div>
+            </form>
+
+            <div id="checkout-result" class="checkout-result" hidden>
+              <!-- Mensajes desde app.js -->
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <!-- MIS PEDIDOS -->
+      <section id="section-orders" class="section">
+        <div class="section-header">
+          <h2>Mis pedidos</h2>
+          <p>Ingresá el ID de tu pedido para ver el estado actual.</p>
+        </div>
+
+        <div class="card">
+          <form id="order-search-form" class="order-search-form">
+            <label for="order-search-id">ID de pedido</label>
+            <div class="order-search-row">
+              <input
+                type="number"
+                id="order-search-id"
+                placeholder="Ej: 7"
+                required
+              />
+              <button type="submit" class="btn primary">
+                Buscar
+              </button>
+            </div>
+          </form>
+          <div id="order-search-result" class="order-search-result" hidden>
+            <!-- app.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ADMIN -->
+      <section id="section-admin" class="section">
+        <div class="section-header">
+          <h2>Panel de administración</h2>
+          <p>Gestioná productos, categorías, clientes, pedidos y reseñas.</p>
+        </div>
+
+        <!-- Login super simple (PIN) -->
+        <div id="admin-auth" class="card admin-auth">
+          <h3>Acceso de administrador</h3>
+          <p>
+            Ingresá un PIN (demo). No hay validación real, cualquier valor permite
+            acceder.
+          </p>
+          <div class="admin-auth-row">
+            <input
+              type="password"
+              id="admin-pin"
+              placeholder="PIN de administrador"
+            />
+            <button id="btn-admin-login" class="btn primary">
+              Entrar
+            </button>
+          </div>
+        </div>
+
+        <!-- CONTENIDO ADMIN -->
+        <div id="admin-content" class="admin-layout" hidden>
+          <!-- TABS -->
+          <div class="admin-sidebar">
+            <button class="admin-tab active" data-admin-tab="health">
+              Estado del sistema
+            </button>
+            <button class="admin-tab" data-admin-tab="products">
+              Productos
+            </button>
+            <button class="admin-tab" data-admin-tab="categories">
+              Categorías
+            </button>
+            <button class="admin-tab" data-admin-tab="clients">
+              Clientes
+            </button>
+            <button class="admin-tab" data-admin-tab="orders">
+              Pedidos
+            </button>
+            <button class="admin-tab" data-admin-tab="reviews">
+              Reseñas
+            </button>
+          </div>
+
+          <!-- PANELES -->
+          <div class="admin-panels">
+            <!-- HEALTH -->
+            <div class="admin-panel visible" data-admin-panel="health">
+  <div class="card">
+
+    <div class="card-header-row">
+      <h3>Salud del backend</h3>
+      <button id="btn-refresh-health" class="btn ghost small">
+        Refrescar
+      </button>
+    </div>
+
+    <!-- Nuevo contenedor dinámico para dashboard -->
+    <div id="health-summary" class="health-summary">
+      Cargando estado...
+    </div>
+
+  </div>
+</div>
+
+
+            <!-- PRODUCTS -->
+            <div class="admin-panel" data-admin-panel="products">
+              <div class="admin-two-column">
+                <div class="card">
+                  <h3>Listado de productos</h3>
+                  <div class="table-wrapper">
+                    <table id="admin-products-table" class="data-table">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Nombre</th>
+                          <th>Precio</th>
+                          <th>Stock</th>
+                          <th>Categoría</th>
+                          <th>Acciones</th>
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <h3>Crear / editar producto</h3>
+                  <form id="admin-product-form" class="form-grid">
+                    <input type="hidden" name="id_key" />
+
+                    <div class="form-group span-2">
+                      <label>Nombre</label>
+                      <input type="text" name="name" required />
+                    </div>
+
+                    <div class="form-group">
+                      <label>Precio</label>
+                      <input type="number" name="price" step="0.01" required />
+                    </div>
+
+                    <div class="form-group">
+                      <label>Stock</label>
+                      <input type="number" name="stock" min="0" required />
+                    </div>
+
+                    <div class="form-group span-2">
+                      <label>Categoría</label>
+                      <select id="admin-product-category" name="category_id" required>
+                        <!-- app.js -->
+                      </select>
+                    </div>
+
+                    <div class="form-actions span-2">
+                      <button type="submit" class="btn primary">
+                        Guardar
+                      </button>
+                      <button
+                        type="button"
+                        id="admin-product-reset"
+                        class="btn ghost"
+                      >
+                        Limpiar
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!-- CATEGORIES -->
+            <div class="admin-panel" data-admin-panel="categories">
+              <div class="admin-two-column">
+                <div class="card">
+                  <h3>Categorías</h3>
+                  <div class="table-wrapper">
+                    <table id="admin-categories-table" class="data-table">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Nombre</th>
+                          <th># Productos</th>
+                          <th>Acciones</th>
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <h3>Crear / editar categoría</h3>
+                  <form id="admin-category-form" class="form-grid">
+                    <input type="hidden" name="id_key" />
+                    <div class="form-group span-2">
+                      <label>Nombre</label>
+                      <input type="text" name="name" required />
+                    </div>
+                    <div class="form-actions span-2">
+                      <button type="submit" class="btn primary">
+                        Guardar
+                      </button>
+                      <button
+                        type="button"
+                        id="admin-category-reset"
+                        class="btn ghost"
+                      >
+                        Limpiar
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!-- CLIENTS -->
+            <div class="admin-panel" data-admin-panel="clients">
+              <div class="card">
+                <h3>Clientes</h3>
+                <div class="table-wrapper">
+                  <table id="admin-clients-table" class="data-table">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Teléfono</th>
+                        <th>Edad</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- ORDERS -->
+            <div class="admin-panel" data-admin-panel="orders">
+              <div class="card">
+                <h3>Pedidos</h3>
+                <div class="table-wrapper">
+                  <table id="admin-orders-table" class="data-table">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Total</th>
+                        <th>Estado</th>
+                        <th>Método entrega</th>
+                        <th>Acción</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- REVIEWS -->
+            <div class="admin-panel" data-admin-panel="reviews">
+              <div class="card">
+                <h3>Reseñas</h3>
+                <div class="table-wrapper">
+                  <table id="admin-reviews-table" class="data-table">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Producto</th>
+                        <th>Cliente</th>
+                        <th>Puntaje</th>
+                        <th>Comentario</th>
+                        <th>Acción</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- MODAL DE PRODUCTO / RESEÑAS -->
+    <div id="modal" class="modal" hidden>
+      <div class="modal-backdrop"></div>
+      <div class="modal-content">
+        <button id="modal-close" class="modal-close">✕</button>
+        <div id="modal-body"></div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="app-footer">
+      <span>© 2025 · Mi Ecommerce · Backend FastAPI + Front Vanilla JS</span>
+    </footer>
+  </div>
+
+  <script src="js/core.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/checkout.js"></script>
+  <script src="js/orders.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/forms.js"></script>
+  <script src="js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
