@@ -10,11 +10,11 @@ El objetivo es ofrecer una experiencia simple, rápida y adaptable a cualquier u
 - Obtiene la lista de productos desde el backend.
 - Filtros por categoría, búsqueda por texto y precio máximo.
 - Paginación visual para mejorar la navegación.
-- Tarjetas de producto con imágenes, precios y estilos modernos.
+- Tarjetas de producto con precios y estilos modernos.
 
 ### ✔ Vista individual del producto
 - Al hacer clic en un producto, se abre su página individual.
-- Muestra imagen, nombre, precio y descripción.
+- Muestra nombre, precio y descripción.
 - Botón para agregar al carrito.
 
 ### ✔ Carrito de compras
